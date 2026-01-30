@@ -41,7 +41,8 @@ VRESET vreset_node 0 {Vreset}
 SRESET vm vreset_node refrac 0 SWRST
 
 ## How to Run
-ngspice lif_neuron.cir
+ngspice lif_one.cir
+
 Observe:
 * vm → membrane potential (sawtooth)
 * spk_raw → spike events
