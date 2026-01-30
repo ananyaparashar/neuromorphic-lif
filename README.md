@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 Neuromorphic LIF Neuron (NGSpice)
@@ -85,3 +86,7 @@ Ananya Parashar Final-year Undergraduate, Electronics & Communication Engineer
 Keywords
 Neuromorphic Computing, Leaky Integrate-and-Fire, Event-Driven Circuits, NGSpice, Analog Neuron Models
 
+=======
+# neuromorphic-lif
+Circuit-level LIF neuron model in NGSpice with refractory reset for neuromorphic systems.
+>>>>>>> 2db9de487714bb542569af1e21b21ef898187c6d
