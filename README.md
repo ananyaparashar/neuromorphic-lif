@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 
 
-Neuromorphic LIF Neuron (NGSpice)
+
+Neuromorphic LIF Neuron (ngspice)
 Overview
 This repository implements a Leaky Integrate-and-Fire (LIF) neuron at circuit level in NGSpice. The model captures how a neuron:
 * Integrates input over time
@@ -81,12 +81,12 @@ This is not clocked digital logic. It is:
 It represents a circuit-level abstraction of biological neuron behavior.
 
 Author
-Ananya Parashar Final-year Undergraduate, Electronics & Communication Engineering Manipal Institute of Technology, MAHE
+Ananya Parashar 
 
 Keywords
 Neuromorphic Computing, Leaky Integrate-and-Fire, Event-Driven Circuits, NGSpice, Analog Neuron Models
 
-=======
+
 # neuromorphic-lif
 Circuit-level LIF neuron model in NGSpice with refractory reset for neuromorphic systems.
->>>>>>> 2db9de487714bb542569af1e21b21ef898187c6d
+
