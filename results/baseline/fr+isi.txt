@@ -1,0 +1,2 @@
+ISI (interspike intervals) = 15.83ms
+FR (firing rate) = 63Hz (approx)

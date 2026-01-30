@@ -1,0 +1,71 @@
+
+*DC input
+
+.options plotwinsize=0
+.options method=gear reltol=1e-4 abstol=1e-12
+
+* parameters
+
+.param Cmem=200n
+.param Vth=0.30
+.param Vreset=0.05
+.param eps=10m
+
+.param VinDC=0.40
+.param Rin=50k
+.param G_leak=100n
+
+* refractory shaping for rest period
+.param Rref=200k
+.param Cref=20n
+
+* input
+Vin in 0 DC {VinDC}
+Rin in vm {Rin}
+
+* membrane and leak
+
+Cmem vm 0 {Cmem}
+Bleak vm 0 I = { G_leak * V(vm) }
+
+
+* comparator
+
+VTH th 0 {Vth}
+BSPK spk_raw 0 V = { 0.5*(1 + tanh((V(vm)-V(th))/{eps})) }
+
+
+* refractory control
+* when spk_raw goes high, refrac rises and stays high briefly
+
+RLP spk_raw refrac {Rref}
+CLP refrac 0 {Cref}
+
+
+* hard reset
+
+VRESET vreset_node 0 {Vreset}
+.model SWRST SW(Ron=5 Roff=1G Vt=0.2 Vh=0.05)
+SRESET vm vreset_node refrac 0 SWRST
+
+
+* transient
+
+.ic V(vm)=0
+.tran 0.05m 300m uic
+
+.control
+run
+plot v(in)
+plot v(vm) v(th)
+plot v(spk_raw) v(refrac)
+
+* Spike timing
+meas tran tspk1 WHEN v(spk_raw)=0.8 RISE=2
+meas tran tspk2 WHEN v(spk_raw)=0.8 RISE=12
+let isi = (tspk2 - tspk1)/10
+let fr  = 1/isi
+print tspk1 tspk2 isi fr
+.endc
+
+.end
